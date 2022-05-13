@@ -38,7 +38,7 @@ class Main {
       }
       if(userChoice.equalsIgnoreCase("b")){
         //milesTraveled += 8*Math.random() + 5;
-        milesTraveled += rand.nextInt(8) + 5; //MIN: 5+ 0 = 0 MAX:7 + 5 = 12
+        milesTraveled += rand.nextInt(8) + 5; //MIN: 5+ 0 = 5 MAX:7 + 5 = 12
         System.out.println("You have traveled: " + milesTraveled);
         thirst++;
         camelFatigue++;
@@ -66,15 +66,39 @@ class Main {
         stillPlaying = false;
       }
       
+      if(milesTraveled >= 200){
+        stillPlaying = false;
+        System.out.println("You won!");
+      }
 
-     
+      if(thirst >= 4 && thirst <= 6){
+        System.out.println("You are thirsty!");
+      }
+
+      if(thirst > 6){
+        System.out.println("Died of dehydration! You Lose");
+        stillPlaying = false;
+      }
       
+      if(camelFatigue >= 5 && camelFatigue <= 8){
+        System.out.println("The camel is getting tired!");
+      }
+
+      if(camelFatigue > 8){
+        stillPlaying = false;
+        System.out.println("Your camel dead. You lose!");
+      }
+
+      if(milesTraveled - nativesTraveled <= 15){
+        System.out.println("The natives are within 15 miles of you.");
+      }
+
+      if(milesTraveled <= nativesTraveled){
+        System.out.println("You got caught by the natives.");
+        stillPlaying = false;
+      }
       
     }
-    
-    
-    
-    
-    
+    System.out.println("You traveled " + milesTraveled + " miles.");
   }
 }
